@@ -1,6 +1,7 @@
 package org.jetbrains.kotlin.rsa
 
 import org.jetbrains.kotlin.bigint.BigPrimeGenerator
+import org.jetbrains.kotlin.bigint.modInverse
 import java.math.BigInteger
 
 const val E_SUGGESTION = "65537"
@@ -26,7 +27,7 @@ class RSAFactory(seed: ByteArray? = null) {
             e = e.add(BigInteger.TWO)
         }
 
-        val d = e.modInverse(m)
+        val d = modInverse(e, m)
         return RSAKey(e, n, codeword) to RSAKey(d, n, codeword)
     }
 }

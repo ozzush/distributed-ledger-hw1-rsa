@@ -20,7 +20,7 @@ class BigPrimeGenerator(seed: ByteArray? = null) {
     }
 
     // Miller-Rabin primality test
-    private fun isPrime(number: BigInteger, iterations: Int = 40): Boolean {
+    private fun isPrime(number: BigInteger, iterations: Int = 100): Boolean {
         if (number < BigInteger.TWO) return false
         if (number == BigInteger.TWO || number == BigInteger.valueOf(3)) return true
         if (number.mod(BigInteger.TWO) == BigInteger.ZERO) return false
